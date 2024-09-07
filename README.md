@@ -12,11 +12,13 @@
 - [x] botão de adicionar ou remover quantidade de itens no próprio modal
 - [x] add observação
 - [ ] add forma de pagamento (precisa de troco?)
-- [ ] add total na mensagem do whatsapp
-- [ ] no modal, colocar o valor para baixo
+- [x] add total na mensagem do whatsapp
+- [x] no modal, colocar o valor para baixo
 - [ ] trocar font do site
 - [ ] zoom na imagem ao clicar
 - [ ] colocar valor em ordem crescente (com javascript)
 - [ ] add resto dos itens (sobremesas (chiques), sucos, vinhos, água, hamburguers, batata frita)
 - [ ] add descrição, valor e nome real dos itens
 - [ ] botão de apagar do carrinho
+- [ ] arrumar icon
+- [ ] arrumar problema de abrir pedido mesmo fora de horário (centralizar mensagem)
