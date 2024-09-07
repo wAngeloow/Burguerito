@@ -8,6 +8,7 @@ const closeModalBtn = document.getElementById("close-modal-btn")
 const cartCounter = document.getElementById("cart-count")
 const addressInput = document.getElementById("address")
 const addressWarm = document.getElementById("address-warm")
+const obsInput = document.getElementById("obs")
 
 let cart = [];
 
@@ -41,9 +42,20 @@ menu.addEventListener("click", function(event){
     if (parentButton){
         const name = parentButton.getAttribute("data-name")
         const price = Number(parentButton.getAttribute("data-price"))
-
+        Toastify({
+            text: "Item adicionado ao carrinho!",
+            duration: 700,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "orange",
+            },
+            onClick: function(){} // Callback after click
+          }).showToast();
         addToCart(name, price)
-    }
+    } 
 })
 
 //FUNÇÃO PARA ADICIONAR NO CARRINHO
@@ -51,12 +63,12 @@ function addToCart(name, price){
 
     const existingItem = cart.find(item => item.name === name) //SE O ITEM JÁ EXISTE, ADICIONAR QUANTIDADE+1
     if(existingItem){
-        existingItem.quantiy += 1
+        existingItem.quantity += 1
     }else{
         cart.push({
             name,
             price,
-            quantiy: 1,   
+            quantity: 1,   
            })
     }
 
@@ -76,16 +88,21 @@ function updateCartModal(){
         <div class="flex items-center justify-between">
             <div>
                 <p class="font-bold">${item.name}</p>
-                <p>Quantidade: ${item.quantiy}</p>
-                <p class="font-medium mt-2">R$${item.price.toFixed(2)}</p>
+                <p>Quantidade:</p>
+                <p class="font-medium mt-2">R$${Number(item.price).toFixed(2).replace(".", ",")}</p>
             </div>
-
-            <button class="remove-from-cart-btn" data-name="${item.name}">
-                 Remover
-            </button>
+            <div class="flex items-center space-x-2">
+                <button class="remove-from-cart-btn bg-gray-500 px-2 py-1 rounded-3xl text-white" data-name="${item.name}">
+                <i class="fas fa-minus pointer-events-none"></i>
+                </button>
+                 <p class="text-lg">${item.quantity}</p>
+                <button class="add-from-cart-btn bg-gray-500 px-2 py-1 rounded-3xl text-white" data-name="${item.name}">
+                <i class="fas fa-plus pointer-events-none"></i>
+                </button>
+            </div>
         </div>`
 
-        total += item.price * item.quantiy; //PREÇO DO ITEM VEZES A QUANTIDADE DE ITENS
+        total += item.price * item.quantity; //PREÇO DO ITEM VEZES A QUANTIDADE DE ITENS
 
         cartItemsContainer.appendChild(cartItemElement)
     })
@@ -95,10 +112,11 @@ function updateCartModal(){
         currency: "BRL"
     });
 
-    cartCounter.innerHTML = `(${cart.length})`
+    const TotalItems = cart.reduce((total, item) => total+item.quantity, 0);
+    cartCounter.innerHTML = `(${TotalItems})`
 }
 
-//FUNÇÃO PARA REMOVER ITEM DO CARRINHO
+//FUNÇÃO PARA REMOVER ITEM DO CARRINHO PELO MODAL
 cartItemsContainer.addEventListener("click", function(event){
     if(event.target.classList.contains("remove-from-cart-btn")){
         const name = event.target.getAttribute("data-name")
@@ -113,12 +131,31 @@ function removeItemCart(name){
     if (index !== -1){
         const item = cart[index];
 
-        if(item.quantiy > 1){
-            item.quantiy -= 1;
+        if(item.quantity > 1){
+            item.quantity -= 1;
             updateCartModal();
             return;
         }
         cart.splice(index, 1);
+        updateCartModal();
+    }
+}
+
+//FUNÇÃO PARA ADICIONAR ITEM DO CARRINHO PELO MODAL
+cartItemsContainer.addEventListener("click", function(event){
+    if(event.target.classList.contains("add-from-cart-btn")){
+        const name = event.target.getAttribute("data-name")
+
+        addItemCart(name)
+    }
+})
+
+function addItemCart(name){
+    const index = cart.findIndex(item => item.name === name);
+
+    if (index !== -1) {
+        const item = cart[index];
+        item.quantity += 1;
         updateCartModal();
     }
 }
@@ -164,14 +201,15 @@ checkoutBtn.addEventListener("click", function(){
     //ENVIAR PEDIDO PARA WHATSAPP
     const cartItems = cart.map((item) => {
         return (
-            `${item.name} - Qtd: ${item.quantiy}`
+            `${item.name} - Qtd: ${item.quantity}`
         )
     }).join("\n")
     const greeting = "Olá, boa noite!";
     const orderMessage = "*_PEDIDO:_*"
     const address = `*_ENDEREÇO:_* ${addressInput.value}`;
+    const obs = `*_OBS:_* ${obsInput.value}`;
     const totalAmout = `*_TOTAL:_* ${cartTotal.textContent}`;
-    const message = encodeURIComponent(`${greeting}\n\n${orderMessage}\n${cartItems}\n\n${address}\n${totalAmout}\n`);
+    const message = encodeURIComponent(`${greeting}\n\n${orderMessage}\n${cartItems}\n\n${address}\n${obs}\n${totalAmout}\n`);
     const phone = "989975565"
 
     window.open(`https://wa.me/${phone}?text=${message}`, "_blank")
