@@ -22,3 +22,4 @@
 - [ ] botão de apagar do carrinho
 - [ ] arrumar icon
 - [ ] arrumar problema de abrir pedido mesmo fora de horário (centralizar mensagem)
+- [ ] tentar acessar sem internet
