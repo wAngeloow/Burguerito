@@ -23,3 +23,4 @@
 - [ ] arrumar icon
 - [ ] arrumar problema de abrir pedido mesmo fora de horário (centralizar mensagem)
 - [ ] tentar acessar sem internet
+- [ ] add foto do projeto no README
