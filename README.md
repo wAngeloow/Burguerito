@@ -13,16 +13,16 @@
 - [x] add observação
 - [x] add total na mensagem do whatsapp
 - [x] no modal, colocar o valor para baixo
-- [ ] add forma de pagamento (precisa de troco?)
-- [ ] trocar font do site
-- [ ] zoom na imagem ao clicar
-- [ ] colocar valor em ordem crescente (com javascript)
-- [x] add descrição, valor e nome real dos itens
-- [ ] botão de apagar do carrinho
-- [ ] arrumar icon
-- [ ] arrumar problema de abrir pedido mesmo fora de horário (centralizar mensagem)
-- [ ] tentar acessar sem internet
 - [x] add whats, face, instagram
 - [x] add barra de rolagem
-- [ ] suavizar cor da página
-- [ ] add foto do projeto no README
+- [x] add descrição, valor e nome real dos itens
+- [ ] add forma de pagamento (precisa de troco?)
+- [ ] arrumar tamanho do precisa de troco
+- [ ] add msg de pagamento e troco no zap
+- [ ] colocar valor em ordem crescente (com javascript)
+- [ ] botão de apagar do carrinho
+- [ ] zoom na imagem ao clicar
+- [ ] arrumar problema de abrir pedido mesmo fora de horário (centralizar mensagem)
+
+- [ ] testar versões mobile
+- [ ] add foto do projeto no README (com foto da msg do zap)

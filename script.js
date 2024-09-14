@@ -12,16 +12,37 @@ const obsInput = document.getElementById("obs")
 
 let cart = [];
 
+//PRECISA DE TROCO?
+document.getElementById('payment-method').addEventListener('change', function() {
+    var paymentMethod = this.value;
+    var changeSection = document.getElementById('change-section');
+
+    if (paymentMethod === 'money') {
+        changeSection.classList.remove('hidden');
+    } else {
+        changeSection.classList.add('hidden');
+    }
+});
+
 //BARRA DE ROLAGEM
-document.addEventListener('scroll', function() {
+window.addEventListener('load', function() {
     const scrollBar = document.getElementById('scroll-bar');
-    const scrollPosition = window.scrollY;
-    const documentHeight = document.documentElement.scrollHeight;
-    const windowHeight = window.innerHeight;
-    const scrollPercentage = scrollPosition / (documentHeight - windowHeight);
     
-    // Define a largura da barra de rolagem com base na porcentagem de rolagem
-    scrollBar.style.width = `${scrollPercentage * 100}%`;
+    function updateScrollBar() {
+        const scrollPosition = window.scrollY;
+        const documentHeight = document.documentElement.scrollHeight;
+        const windowHeight = window.innerHeight;
+        const scrollPercentage = scrollPosition / (documentHeight - windowHeight);
+        
+        // Define a largura da barra de rolagem com base na porcentagem de rolagem
+        scrollBar.style.width = `${scrollPercentage * 100}%`;
+    }
+
+    // Atualiza a barra de rolagem quando a página é carregada
+    updateScrollBar();
+    
+    // Atualiza a barra de rolagem conforme o usuário rola
+    document.addEventListener('scroll', updateScrollBar);
 });
 
 
@@ -241,11 +262,30 @@ checkoutBtn.addEventListener("click", function(){
           }).showToast();
     }*/
     
-
     if (cart.length === 0) return; //VERIFICA SE TEM ITEM NO CARRINHO, SE NÃO TIVER NÃO ACONTECE NADA
     if (addressInput.value === ""){
         addressWarm.classList.remove("hidden")
         addressInput.classList.add("border-red-500")
+        return;
+    }
+    if (addressInput.value === ""){
+        addressWarm.classList.remove("hidden")
+        addressInput.classList.add("border-red-500")
+        return;
+    }
+    // VERIFICA SE FOI SELECIONADA UMA FORMA DE PAGAMENTO
+    document.getElementById('payment-method').addEventListener('change', function() {
+        const paymentSelect = this;
+        paymentSelect.style.backgroundColor = ''; // remove a cor de fundo
+        paymentSelect.style.borderColor = ''; // remove a borda vermelha
+    });
+
+    const paymentSelect = document.getElementById('payment-method');
+    const paymentMethod = paymentSelect.value;
+    
+    if (paymentMethod === "") {
+        paymentSelect.style.backgroundColor = '#fef2f2';
+        paymentSelect.style.borderColor = '#ef4444';
         return;
     }
 
