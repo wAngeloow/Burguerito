@@ -24,3 +24,8 @@
 - [ ] arrumar problema de abrir pedido mesmo fora de horário (centralizar mensagem)
 - [ ] tentar acessar sem internet
 - [ ] add foto do projeto no README
+- [ ] add whats, face, instagram
+- [ ] add barra de rolagem
+- [ ] add efeito dos itens aparecendo
+- [ ] suavizar cor da página
+- [ ] concertar logo no gitpages
