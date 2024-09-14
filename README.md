@@ -11,21 +11,18 @@
 - [x] resolver problema do tamanho do modal
 - [x] botão de adicionar ou remover quantidade de itens no próprio modal
 - [x] add observação
-- [ ] add forma de pagamento (precisa de troco?)
 - [x] add total na mensagem do whatsapp
 - [x] no modal, colocar o valor para baixo
+- [ ] add forma de pagamento (precisa de troco?)
 - [ ] trocar font do site
 - [ ] zoom na imagem ao clicar
 - [ ] colocar valor em ordem crescente (com javascript)
-- [ ] add resto dos itens (sobremesas (chiques), sucos, vinhos, água, hamburguers, batata frita)
-- [ ] add descrição, valor e nome real dos itens
+- [x] add descrição, valor e nome real dos itens
 - [ ] botão de apagar do carrinho
 - [ ] arrumar icon
 - [ ] arrumar problema de abrir pedido mesmo fora de horário (centralizar mensagem)
 - [ ] tentar acessar sem internet
-- [ ] add foto do projeto no README
-- [ ] add whats, face, instagram
-- [ ] add barra de rolagem
-- [ ] add efeito dos itens aparecendo
+- [x] add whats, face, instagram
+- [x] add barra de rolagem
 - [ ] suavizar cor da página
-- [ ] concertar logo no gitpages
+- [ ] add foto do projeto no README

@@ -12,6 +12,69 @@ const obsInput = document.getElementById("obs")
 
 let cart = [];
 
+// main.js ou o arquivo JavaScript principal do seu site
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js').then((registration) => {
+        console.log('Service Worker registrado com sucesso:', registration);
+      }).catch((error) => {
+        console.log('Falha ao registrar o Service Worker:', error);
+      });
+    });
+  }
+  
+
+//BARRA DE ROLAGEM
+document.addEventListener('scroll', function() {
+    const scrollBar = document.getElementById('scroll-bar');
+    const scrollPosition = window.scrollY;
+    const documentHeight = document.documentElement.scrollHeight;
+    const windowHeight = window.innerHeight;
+    const scrollPercentage = scrollPosition / (documentHeight - windowHeight);
+    
+    // Define a largura da barra de rolagem com base na porcentagem de rolagem
+    scrollBar.style.width = `${scrollPercentage * 100}%`;
+});
+
+
+//MODAL DE ZOOMM
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('drink-modal');
+    const closeModal = document.getElementById('close-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalName = document.getElementById('modal-name');
+    const modalPrice = document.getElementById('modal-price');
+
+    document.querySelectorAll('.open-modal').forEach(img => {
+        img.addEventListener('click', function() {
+            const imageSrc = this.getAttribute('data-image');
+            const name = this.getAttribute('data-name');
+            const price = this.getAttribute('data-price');
+
+            // Atualiza o conteúdo do modal
+            modalImage.src = imageSrc;
+            modalName.textContent = name;
+            modalPrice.textContent = price;
+
+            // Exibe o modal
+            modal.classList.remove('hidden');
+        });
+    });
+
+    closeModal.addEventListener('click', function() {
+        // Oculta o modal
+        modal.classList.add('hidden');
+    });
+
+    // Oculta o modal ao clicar fora dele
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+        }
+    });
+});
+
+
 /* MOSTRA NO CONSOLE O ITEM QUE FOI CLICADO PELO USUÁRIO
 menu.addEventListener("click", function(event){
     console.log(event.target)

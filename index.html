@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"/>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMCSex4y46piuqGks/6ylxu6R69GxdO+1e0ImE" crossorigin="anonymous">
     
     <!--META TAG-->
     <meta property="og:type" content="website"/>
@@ -23,11 +25,8 @@
 </head>
 <body>
 
-    <!--apagar linha - Ctrl + Shift + K: 
-        duplicar linha - Shift+Alt+Flecha  -->
-
     <!-- HEADER -->
-     <header style="background-image: url('./assets/banner.png');" class="w-full h-[420px] bg-cover bg-center">
+    <header style="background-image: url('./assets/banner.png');" class="w-full h-[420px] bg-cover bg-center">
         <div class="w-full h-full flex flex-col justify-center items-center">
             <img src="./assets/logo.png" alt="logo WebBurger"  class="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200">
             <h1 class="text-4xl mt-4 mb-2 font-bold text-white">Burguerito</h1>
@@ -36,8 +35,21 @@
             <div class="bg-green-600 px-4 py-1 rounded-lg mt-5" id="date-span">
                 <span class="text-white font-medium">Seg à Dom - 18:00 às 00:00</span>
             </div>
+    
+            <!-- Nova div para os ícones -->
+            <div class="mt-4 space-x-4">
+                <button class="icon-button">
+                    <i class="fa-brands fa-whatsapp text-white text-3xl"></i>
+                </button>
+                <button class="icon-button">
+                    <i class="fa-brands fa-instagram text-white text-3xl"></i>
+                </button>
+                <button class="icon-button">
+                    <i class="fa-brands fa-facebook text-white text-3xl"></i>
+                </button>
+            </div>
         </div>
-     </header>
+    </header>
     <!-- FIM DO HEADER -->
 
     <h2 class="text-2xl md:text-3xl font-bold text-center mt-9 mb-6">Conheça nosso menu</h2>
@@ -53,7 +65,7 @@
 
             <!-- PRODUTO ITEM-->
             <div class="flex gap-2">
-                <img src="./assets/hamb-1.png" alt="hamburguer Classico" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+                <img src="./assets/hamb-1.png" alt="hamburguer Classico" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300 cursor-pointer open-modal" data-image="./assets/hamb-1.png" data-name="Hamburguer Classico" data-price="R$22,00">
                 <div>
                     <p class="font-bold">Hamburguer Clássico</p>
                     <p class="text-sm">Hambúrguer tradicional com carne bovina, queijo, alface, tomate e maionese no pão brioche.</p>
@@ -183,106 +195,6 @@
 
         <main>
             <div class="mx-auto max-w-7xl px-2 my-2">
-                <h2 class="font-bold text-3xl">Batatas-Fritas</h2>
-            </div>
-    
-            <!-- GRID BATATAS-FRITAS-->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16" id="menu">
-    
-                <!-- BATATA ITEM-->
-                <div class="flex gap-2 w-full">
-                    <img src="./assets/batata-frita-1.png" alt="Batata-Frita pequena" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
-                    <div class="w-full">
-                        <p class="font-bold">Batata-Frita (Pequena)</p>
-                        <div class="flex items-center gap-2 justify-between mt-3">
-                            <p class="font-bold text-lg">R$7,50</p>
-                            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Batata-Frita pequena" data-price="7.50">
-                                <i class="fa fa-cart-plus text-lg text-white"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- FIM BATATA ITEM-->
-    
-                <!-- BATATA ITEM-->
-                <div class="flex gap-2 w-full">
-                    <img src="./assets/batata-frita-torre.png" alt="Batata-Frita torre" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
-                    <div class="w-full">
-                        <p class="font-bold">Batata-Frita Torre</p>
-                        <div class="flex items-center gap-2 justify-between mt-3">
-                            <p class="font-bold text-lg">R$15,70</p>
-                            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Batata-Frita torre" data-price="15.70">
-                                <i class="fa fa-cart-plus text-lg text-white"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- FIM BATATA ITEM-->
-    
-            <!-- FIM GRID BATATAS-FRITAS-->
-        </main>
-
-        <main>
-            <div class="mx-auto max-w-7xl px-2 my-2">
-                <h2 class="font-bold text-3xl">Sobremesas</h2>
-            </div>
-    
-            <!-- GRID SOBREMESA-->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16" id="menu">
-    
-                <!-- SOBREMESA ITEM-->
-                <div class="flex gap-2 w-full">
-                    <img src="./assets/sobremesa-1.png" alt="Fondue" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
-                    <div class="w-full">
-                        <p class="font-bold">Fondue</p>
-                        <p class="text-sm">Fondue de chocolate para mergulhar frutas e biscoitos, perfeito para uma doce indulgência.</p>
-                        <div class="flex items-center gap-2 justify-between mt-3">
-                            <p class="font-bold text-lg">R$35,00</p>
-                            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Fondue" data-price="35">
-                                <i class="fa fa-cart-plus text-lg text-white"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- FIM SOBREMESA ITEM-->
-
-                <!-- SOBREMESA ITEM-->
-                <div class="flex gap-2 w-full">
-                    <img src="./assets/sobremesa-2.png" alt="Bolo de creme" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
-                    <div class="w-full">
-                        <p class="font-bold">Bolo de Creme</p>
-                        <p class="text-sm">Bolo fofinho de creme, coberto com chocolate e morango fresco. Uma combinação irresistível!</p>
-                        <div class="flex items-center gap-2 justify-between mt-3">
-                            <p class="font-bold text-lg">R$17,00</p>
-                            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Bolo de creme" data-price="17">
-                                <i class="fa fa-cart-plus text-lg text-white"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- FIM SOBREMESA ITEM-->
-
-                <!-- SOBREMESA ITEM-->
-                <div class="flex gap-2 w-full">
-                    <img src="./assets/sobremesa-3.png" alt="Pudim" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
-                    <div class="w-full">
-                        <p class="font-bold">Pudim</p>
-                        <p class="text-sm">Pudim cremoso com caramelo suave, derretendo na boca em cada colherada.</p>
-                        <div class="flex items-center gap-2 justify-between mt-3">
-                            <p class="font-bold text-lg">R$14,00</p>
-                            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Pudim" data-price="14">
-                                <i class="fa fa-cart-plus text-lg text-white"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- FIM SOBREMESA ITEM-->
-    
-            <!-- FIM GRID SOBREMESAS-->
-        </main>
-
-        <main>
-            <div class="mx-auto max-w-7xl px-2 my-2">
                 <h2 class="font-bold text-3xl">Bebidas</h2>
             </div>
     
@@ -291,7 +203,7 @@
     
                 <!-- BEBIDA ITEM-->
                 <div class="flex gap-2 w-full">
-                    <img src="./assets/suco-1.png" alt="Suco de Maracujá" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+                    <img src="./assets/suco-1.png" alt="Suco de Maracujá" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300 cursor-pointer open-modal" data-image="./assets/suco-1.png" data-name="Suco de Maracujá (Natural)" data-price="R$9,00">
                     <div class="w-full">
                         <p class="font-bold">Suco de Maracujá (Natural)</p>
                         <div class="flex items-center gap-2 justify-between mt-3">
@@ -413,6 +325,24 @@
             <!-- FIM GRID BEBIDAS-->
         </main>
 
+        <!-- MODAL DE  ZOOM -->
+        <div id="drink-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+            <div class="bg-white p-4 rounded-lg max-w-lg w-full relative">
+                <button id="close-modal" class="absolute top-2 right-2 text-black text-xl">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </button>
+                <img id="modal-image" src="" alt="Bebida" class="w-full h-auto rounded-md">
+                <p id="modal-name" class="mt-4 font-bold text-xl border-b-2 border-orange-500 pb-1 mb-2">Nome da Bebida</p>
+                <div class="flex items-center justify-between">
+                    <p id="modal-price" class="font-bold text-lg">R$0,00</p>
+                    <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Suco de Maracujá" data-price="9">
+                        <i class="fa fa-cart-plus text-lg text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- FIM MODAL DE ZOOM-->
+
      </div>
      <!-- FIM MENU-->
 
@@ -442,16 +372,19 @@
     </div>
     <!-- FIM MODAL CART-->
 
-     <!-- BUTTON CART FOOTER-->
-     <footer class="w-full bg-orange-600 py-3 fixed bottom-0 z-40 flex items-center justify-center">
-
-        <button class="flex items-center gap-2 text-white font-bold"id="cart-btn">
+    <!-- BUTTON CART FOOTER -->
+    <footer class="w-full bg-orange-600 py-3 fixed bottom-0 z-40 flex items-center justify-center">
+        <button class="flex items-center gap-2 text-white font-bold" id="cart-btn">
             <span id="cart-count">(0)</span>
             Ver carrinho
             <i class="fa fa-cart-plus text-lg text-white"></i>
         </button>
-     </footer>
-     <!-- FIM BUTTON CART FOOTER-->
+    </footer>
+    <!-- FIM BUTTON CART FOOTER -->
+
+    <!-- BARRA DE ROLAGEM -->
+    <div id="scroll-bar" class="w-full h-2 bg-orange-400 fixed bottom-[51px] left-0 z-50"></div>
+    <!-- FIM DA BARRA DE ROLAGEM -->
 
      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
      <script src="script.js"></script>
