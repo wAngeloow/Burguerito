@@ -315,7 +315,7 @@ checkoutBtn.addEventListener("click", function() {
     const change = changeAmount ? `*_TROCO:_* R$${changeAmount}` : "*_TROCO:_* Não necessário!";
     const totalAmount = `*_TOTAL:_* ${cartTotal.textContent}`;
     const message = encodeURIComponent(`${greeting}\n\n${orderMessage}\n${cartItems}\n\n${obs}\n\n${address}\n${change}\n${totalAmount}`);
-    const phone = "984172664";
+    const phone = "000000000";
 
     window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
     cartModal.style.display = "none";
@@ -337,9 +337,8 @@ checkoutBtn.addEventListener("click", function() {
 
 //VERIFICAR HORÁRIO DE FUNCIONAMENTO DO RESTAURANTE
 function checkRestaurantOpen() {
-    //const data = new Date();
-    //const hora = data.getHours();
-    const hora = 23; // Definindo a hora para 23:00 para fins de teste
+    const data = new Date();
+    const hora = data.getHours();
     return hora >= 18 && hora < 24; // true - RESTAURANTE ABERTO
 }
 

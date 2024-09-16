@@ -1,81 +1,68 @@
 # Burguerito
 
 <div align="center">
-  <p>CONFIGURAÇÃO DO GIT</p>
-  
-  <img src="image.png" alt="image" style="width: 60%;"/>
+  <p><strong>VISÃO GERAL DO SITE</strong></p>
+
+  <img src="https://github.com/user-attachments/assets/a2216d49-c1b8-4fa9-bbe0-ee8c029874c8" alt="image" style="width: 60%;"/>
   <img src="https://github.com/user-attachments/assets/4b8d8384-87b0-4849-8d9a-194985ade0ed" alt="image" style="width: 20%;"/>
   
 </div>
 
-MODAL ABERTO
-![alt text](image-1.png)
-![alt text](image-2.png)
-
-IMG PEDIDO WHATS
-https://prnt.sc/k_0lyfKU5nEO
-
 --------------------------------------------------------------------------------------------------------
-
 <br>
 
 <div align="center">
-  <table>
-    <tr>
-      <td><a href="https://wangeloow.github.io/Burguerito/">Deploy</a></td>
-    </tr>
-  </table>
+  <p><strong>MODAL DO CARRINHO</strong></p>
+  
+  <img src="image-1.png" alt="image" style="width: 60%;"/>
+  <img src="image-2.png" alt="image" style="width: 20%;"/>
+  
 </div>
 
+--------------------------------------------------------------------------------------------------------
+<br>
 
+<div align="center">
+  <p><strong>PEDIDO NO WHATSAPP</strong></p>
+  
+  <img src="[image-1.png](https://prnt.sc/k_0lyfKU5nEO)" alt="image" style="width: 60%;"/>
+  
+</div>
 
+--------------------------------------------------------------------------------------------------------
+<br>
 
+<div align="center">
+  <p><strong>TECNOLOGIAS USADAS</strong></p>
+</div>
 
+  - HTML
+  - CSS
+  - JavaScript
+  - TailwindCSS
+  - Node.js
 
+--------------------------------------------------------------------------------------------------------
+<br>
 
+<div align="center">
+  <p><strong>FUNCIONALIDADS</strong></p>
+</div>
 
+-  100% Responsivo: O site é totalmente adaptável a diferentes tamanhos de tela e dispositivos.
+- Adição e Remoção de Itens: É possível adicionar e remover itens diretamente no menu ou pelo modal. Uma notificação é exibida ao adicionar itens ao carrinho.
+- Finalização da Compra: A compra é finalizada através do modal de carrinho.
+- Limpar Carrinho: Há uma opção para limpar o carrinho dentro do modal.
+- Carrinho Vazio: Se o carrinho estiver vazio, uma mensagem será exibida em vez do modal de informações.
+- Observações no Pedido: É possível adicionar observações ao pedido.
+- Opções de Pagamento: Aceita pagamentos por Pix, cartão de crédito, débito e dinheiro, com a possibilidade de digitar o troco, se necessário.
+- Estado da Hamburgueria: O envio do pedido é impedido se a hamburgueria estiver fechada, com uma notificação exibida.
+- Zoom nas Imagens: Ao clicar na imagem do item desejado, ela abre em forma de zoom.
+- Barra de Rolagem: A barra de rolagem indica quando o usuário está perto do fim do cardápio.
 
+--------------------------------------------------------------------------------------------------------
+<br>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- [x] trocar variável quantiy
-- [x] trocar . por , nos valores
-- [x] mudar cor da página
-- [x] mensagem amarela quando algo for adicionado ao carrinho
-- [x] mudar carrinho para quantidade ao invés de itens
-- [X] add descrição e nome real do site
-- [x] resolver problema do tamanho do modal
-- [x] botão de adicionar ou remover quantidade de itens no próprio modal
-- [x] add observação
-- [x] add total na mensagem do whatsapp
-- [x] no modal, colocar o valor para baixo
-- [x] add whats, face, instagram
-- [x] add barra de rolagem
-- [x] add descrição, valor e nome real dos itens
-- [x] arrumar tamanho do precisa de troco
-- [x] add msg de pagamento e troco no zap
-- [x] só aparecer informações caso tenha algo no carrinho
-- [x] opção de limpar carrinho
-- [x] se for um item apenas, aparece uma lixeira
-- [x] colocar valor em ordem crescente
-- [x] botão de apagar do carrinho
-- [x] arrumar problema de abrir pedido mesmo fora de horário (centralizar mensagem)
-- [x] zoom na imagem ao clicar
-
-- [ ] testar versões mobile
-- [ ] add foto do projeto no README (com foto da msg do zap)
+<div align="center">
+  <a href="https://wangeloow.github.io/Burguerito/"><strong>Deploy</strong></a>
+</div>
