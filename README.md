@@ -1,5 +1,56 @@
 # Burguerito
-[Clique aqui para abrir o site!](https://wangeloow.github.io/Burguerito/)
+
+<div align="center">
+  <p>CONFIGURAÇÃO DO GIT</p>
+  
+  <img src="image.png" alt="image" style="width: 60%;"/>
+  <img src="https://github.com/user-attachments/assets/4b8d8384-87b0-4849-8d9a-194985ade0ed" alt="image" style="width: 20%;"/>
+  
+</div>
+
+MODAL ABERTO
+![alt text](image-1.png)
+![alt text](image-2.png)
+
+IMG PEDIDO WHATS
+https://prnt.sc/k_0lyfKU5nEO
+
+--------------------------------------------------------------------------------------------------------
+
+<br>
+
+<div align="center">
+  <table>
+    <tr>
+      <td><a href="https://wangeloow.github.io/Burguerito/">Deploy</a></td>
+    </tr>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 - [x] trocar variável quantiy
