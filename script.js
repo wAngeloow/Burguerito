@@ -93,7 +93,7 @@ menu.addEventListener("click", function(event){
 //FUNÇÃO PARA ADICIONAR NO CARRINHO
 function addToCart(name, price){
 
-    const existingItem = cart.find(item => item.name === name) //SE O ITEM JÁ EXISTE, ADICIONAR QUANTIDADE+1
+    const existingItem = cart.find(item => item.name === name) // Se o item já existe, adiciona quantidade+1
     if(existingItem){
         existingItem.quantity += 1
     }else{
@@ -139,7 +139,7 @@ function updateCartModal() {
                 </div>
             </div>`;
 
-            total += item.price * item.quantity; // PREÇO DO ITEM VEZES A QUANTIDADE DE ITENS
+            total += item.price * item.quantity; // Preço do item vezes a quantidade de itens
 
             cartItemsContainer.appendChild(cartItemElement);
         } else {
@@ -188,13 +188,13 @@ function updateCartModal() {
     }
 }
 
-// Função para limpar o carrinho
+//FUNÇÃO PARA LIMPAR CARRINHO
 function clearCart() {
     cart = []; // Limpa o array de itens do carrinho
     updateCartModal(); // Atualiza o modal do carrinho
 }
 
-// Adiciona o evento de clique ao botão de limpar carrinho
+//ADICIONA O EVENTO DE CLIQUE AO BOTÃODE LIMPAR CARRINHO
 document.getElementById('clear-cart-btn').addEventListener('click', clearCart);
 
 
@@ -248,7 +248,7 @@ addressInput.addEventListener("input", function(event){
 
     if (inputValue !== ""){
         addressInput.classList.remove("border-red-500")
-        addressWarm.classList.add ("hidden") //REMOVE O AVISO QUANDO FOR DIGITADO O ENDEREÇO
+        addressWarm.classList.add ("hidden") // remove o aviso quando for digitado o endereço
     }
 })
 
@@ -265,7 +265,7 @@ document.getElementById('payment-method').addEventListener('change', function() 
 });
 
 
-// FINALIZAR PEDIDO
+//FINALIZAR PEDIDO
 checkoutBtn.addEventListener("click", function() {
     const isOpen = checkRestaurantOpen();
 
@@ -285,14 +285,14 @@ checkoutBtn.addEventListener("click", function() {
         return; // Interrompe o processo se o restaurante estiver fechado
     }
 
-    if (cart.length === 0) return; // VERIFICA SE TEM ITEM NO CARRINHO, SE NÃO TIVER NÃO ACONTECE NADA
+    if (cart.length === 0) return; // Verifica se tem o item no carrinho, se não tiver nada acontece
     if (addressInput.value === "") {
         addressWarm.classList.remove("hidden")
         addressInput.classList.add("border-red-500")
         return;
     }
 
-    // VERIFICA SE FOI SELECIONADA UMA FORMA DE PAGAMENTO
+    //VERIFICA SE FOI SELECIONADA UMA FORMA DE PAGAMENTO
     const paymentSelect = document.getElementById('payment-method');
     const paymentMethod = paymentSelect.value;
 
@@ -302,7 +302,7 @@ checkoutBtn.addEventListener("click", function() {
         return;
     }
 
-    // ENVIAR PEDIDO PARA WHATSAPP
+    //ENVIAR PEDIDO PARA WHATSAPP
     const cartItems = cart.map((item) => {
         return `${item.name} - Qtd: ${item.quantity}`;
     }).join("\n");
@@ -319,7 +319,7 @@ checkoutBtn.addEventListener("click", function() {
 
     window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
     cartModal.style.display = "none";
-    cart = []; // LIMPA CARRINHO AO MANDAR PEDIDO VIA WHATSAPP
+    cart = []; // Limpa carrinho ao enviar pedido via whatsapp
     updateCartModal();
     Toastify({
         text: "Pedido enviado com sucesso!",
@@ -335,7 +335,7 @@ checkoutBtn.addEventListener("click", function() {
     }).showToast();
 });
 
-// VERIFICAR HORÁRIO DE FUNCIONAMENTO DO RESTAURANTE
+//VERIFICAR HORÁRIO DE FUNCIONAMENTO DO RESTAURANTE
 function checkRestaurantOpen() {
     //const data = new Date();
     //const hora = data.getHours();
@@ -347,8 +347,8 @@ const spanItem = document.getElementById("date-span");
 const isOpen = checkRestaurantOpen();
 
 if (isOpen) {
-    spanItem.classList.remove("bg-red-500"); // REMOVE VERMELHO
-    spanItem.classList.add("bg-green-600"); // ADD VERDE
+    spanItem.classList.remove("bg-red-500"); // Remove vermelho
+    spanItem.classList.add("bg-green-600"); // Adiciona verde
 } else {
     spanItem.classList.remove("bg-green-600");
     spanItem.classList.add("bg-red-500");
