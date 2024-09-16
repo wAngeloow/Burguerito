@@ -4,7 +4,7 @@
   <p><strong>VISÃO GERAL DO SITE</strong></p>
 
   <img src="https://github.com/user-attachments/assets/a2216d49-c1b8-4fa9-bbe0-ee8c029874c8" alt="image" style="width: 60%;"/>
-  <img src="https://github.com/user-attachments/assets/4b8d8384-87b0-4849-8d9a-194985ade0ed" alt="image" style="width: 20%;"/>
+  <img src="https://github.com/user-attachments/assets/6aba0dac-2506-46f0-bc9a-cb6d87c06796" alt="image" style="width: 20%;"/>
   
 </div>
 
@@ -15,8 +15,8 @@
   <p><strong>MODAL DO CARRINHO</strong></p>
   
   <img src="image-1.png" alt="image" style="width: 60%;"/>
-  <img src="image-2.png" alt="image" style="width: 20%;"/>
-  
+  <img src="https://github.com/user-attachments/assets/048aa98e-04b4-4c70-8976-bcf5d3558b62" alt="image" style="width: 20%;"/>
+
 </div>
 
 --------------------------------------------------------------------------------------------------------
@@ -24,8 +24,8 @@
 
 <div align="center">
   <p><strong>PEDIDO NO WHATSAPP</strong></p>
-  
-  <img src="[image-1.png](https://prnt.sc/k_0lyfKU5nEO)" alt="image" style="width: 60%;"/>
+
+  <img src="https://github.com/user-attachments/assets/bf4a19d3-2d2b-42e4-8b90-44b2fadde2e6" alt="image" style="width: 40%;"/>
   
 </div>
 
