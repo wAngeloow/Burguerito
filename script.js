@@ -12,16 +12,21 @@ const obsInput = document.getElementById("obs")
 
 let cart = [];
 
-//PRECISA DE TROCO?
-document.getElementById('payment-method').addEventListener('change', function() {
-    var paymentMethod = this.value;
-    var changeSection = document.getElementById('change-section');
+//MODAL DE IMAGEM
+document.addEventListener('DOMContentLoaded', () => {
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
 
-    if (paymentMethod === 'money') {
-        changeSection.classList.remove('hidden');
-    } else {
-        changeSection.classList.add('hidden');
-    }
+    document.querySelectorAll('.open-modal').forEach(image => {
+        image.addEventListener('click', (event) => {
+            modalImage.src = event.target.src;
+            imageModal.style.display = 'flex';
+        });
+    });
+
+    imageModal.addEventListener('click', () => {
+        imageModal.style.display = 'none';
+    });
 });
 
 //BARRA DE ROLAGEM
@@ -44,51 +49,6 @@ window.addEventListener('load', function() {
     // Atualiza a barra de rolagem conforme o usuário rola
     document.addEventListener('scroll', updateScrollBar);
 });
-
-
-//MODAL DE ZOOMM
-document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById('drink-modal');
-    const closeModal = document.getElementById('close-modal');
-    const modalImage = document.getElementById('modal-image');
-    const modalName = document.getElementById('modal-name');
-    const modalPrice = document.getElementById('modal-price');
-
-    document.querySelectorAll('.open-modal').forEach(img => {
-        img.addEventListener('click', function() {
-            const imageSrc = this.getAttribute('data-image');
-            const name = this.getAttribute('data-name');
-            const price = this.getAttribute('data-price');
-
-            // Atualiza o conteúdo do modal
-            modalImage.src = imageSrc;
-            modalName.textContent = name;
-            modalPrice.textContent = price;
-
-            // Exibe o modal
-            modal.classList.remove('hidden');
-        });
-    });
-
-    closeModal.addEventListener('click', function() {
-        // Oculta o modal
-        modal.classList.add('hidden');
-    });
-
-    // Oculta o modal ao clicar fora dele
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            modal.classList.add('hidden');
-        }
-    });
-});
-
-
-/* MOSTRA NO CONSOLE O ITEM QUE FOI CLICADO PELO USUÁRIO
-menu.addEventListener("click", function(event){
-    console.log(event.target)
-})
-*/
 
 //ABRIR MODAL DO CARRINHO
 cartBtn.addEventListener("click", function() {
@@ -148,45 +108,95 @@ function addToCart(name, price){
 }
 
 //ATUALIZA O CARRINHO
-function updateCartModal(){
+function updateCartModal() {
     cartItemsContainer.innerHTML = "";
     let total = 0;
     
     cart.forEach(item => {
-        const cartItemElement = document.createElement("div")
-        cartItemElement.classList.add("flex", "justify-between", "mb-4", "flex-col")
+        // Verifica se item.price e item.quantity são válidos
+        if (item.price && item.quantity) {
+            const cartItemElement = document.createElement("div");
+            cartItemElement.classList.add("flex", "justify-between", "mb-4", "flex-col");
 
-        cartItemElement.innerHTML = `
-        <div class="flex items-center justify-between">
-            <div>
-                <p class="font-bold">${item.name}</p>
-                <p>Quantidade:</p>
-                <p class="font-medium mt-2">R$${Number(item.price).toFixed(2).replace(".", ",")}</p>
-            </div>
-            <div class="flex items-center space-x-2">
-                <button class="remove-from-cart-btn bg-gray-500 px-2 py-1 rounded-3xl text-white" data-name="${item.name}">
-                <i class="fas fa-minus pointer-events-none"></i>
-                </button>
-                 <p class="text-lg">${item.quantity}</p>
-                <button class="add-from-cart-btn bg-gray-500 px-2 py-1 rounded-3xl text-white" data-name="${item.name}">
-                <i class="fas fa-plus pointer-events-none"></i>
-                </button>
-            </div>
-        </div>`
+            // Determina qual ícone mostrar com base na quantidade de itens
+            const removeIconClass = item.quantity > 1 ? "fas fa-minus" : "fas fa-trash-alt";
+            
+            cartItemElement.innerHTML = `
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="font-bold">${item.name}</p>
+                    <p>Quantidade: ${item.quantity}</p>
+                    <p class="font-medium mt-2">R$${Number(item.price).toFixed(2).replace(".", ",")}</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button class="remove-from-cart-btn bg-gray-500 px-2 py-1 rounded-3xl text-white" data-name="${item.name}">
+                    <i class="${removeIconClass} pointer-events-none"></i>
+                    </button>
+                     <p class="text-lg">${item.quantity}</p>
+                    <button class="add-from-cart-btn bg-gray-500 px-2 py-1 rounded-3xl text-white" data-name="${item.name}">
+                    <i class="fas fa-plus pointer-events-none"></i>
+                    </button>
+                </div>
+            </div>`;
 
-        total += item.price * item.quantity; //PREÇO DO ITEM VEZES A QUANTIDADE DE ITENS
+            total += item.price * item.quantity; // PREÇO DO ITEM VEZES A QUANTIDADE DE ITENS
 
-        cartItemsContainer.appendChild(cartItemElement)
-    })
-
-    cartTotal.textContent = total.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL"
+            cartItemsContainer.appendChild(cartItemElement);
+        } else {
+            console.warn(`Item inválido: ${JSON.stringify(item)}`);
+        }
     });
 
-    const TotalItems = cart.reduce((total, item) => total+item.quantity, 0);
-    cartCounter.innerHTML = `(${TotalItems})`
+    // Formata o total e remove o espaço entre "R$" e o valor
+    const formattedTotal = total.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    }).replace(/\s/g, '');
+
+    cartTotal.textContent = formattedTotal; // Atualiza o total exibido
+
+    const totalItems = cart.reduce((total, item) => total + (item.quantity || 0), 0);
+    cartCounter.innerHTML = `(${totalItems})`;
+
+    const additionalFields = document.getElementById('additional-fields');
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const emptyCart = document.getElementById('empty-cart');
+    const footerButtons = document.getElementById('footer-buttons');
+    const clearCartBtn = document.getElementById('clear-cart-btn');
+    const cartTitle = document.getElementById('cart-title');
+    const cartTitleContainer = document.getElementById('cart-title-container');
+
+    if (totalItems > 0) {
+        additionalFields.classList.remove('hidden');
+        checkoutBtn.classList.remove('hidden');
+        clearCartBtn.classList.remove('hidden');
+        emptyCart.classList.add('hidden');
+        cartTitleContainer.classList.remove('hidden');
+        cartTitle.style.display = 'block'; // Exibe o título
+        footerButtons.classList.remove('centralized');
+        footerButtons.style.justifyContent = 'space-between'; // Garante a distribuição entre os botões
+    } else {
+        additionalFields.classList.add('hidden');
+        checkoutBtn.classList.add('hidden');
+        clearCartBtn.classList.add('hidden');
+        emptyCart.classList.remove('hidden');
+        cartTotal.textContent = "R$0,00";
+        cartTitleContainer.classList.add('hidden');
+        cartTitle.style.display = 'none'; // Oculta o título
+        footerButtons.classList.add('centralized');
+        footerButtons.style.justifyContent = 'center'; // Centraliza o botão "Voltar"
+    }
 }
+
+// Função para limpar o carrinho
+function clearCart() {
+    cart = []; // Limpa o array de itens do carrinho
+    updateCartModal(); // Atualiza o modal do carrinho
+}
+
+// Adiciona o evento de clique ao botão de limpar carrinho
+document.getElementById('clear-cart-btn').addEventListener('click', clearCart);
+
 
 //FUNÇÃO PARA REMOVER ITEM DO CARRINHO PELO MODAL
 cartItemsContainer.addEventListener("click", function(event){
@@ -242,12 +252,24 @@ addressInput.addEventListener("input", function(event){
     }
 })
 
+//PRECISA DE TROCO?
+document.getElementById('payment-method').addEventListener('change', function() {
+    var paymentMethod = this.value;
+    var changeSection = document.getElementById('change-section');
 
-//FINALIZAR PEDIDO
-checkoutBtn.addEventListener("click", function(){
+    if (paymentMethod === 'money') {
+        changeSection.classList.remove('hidden');
+    } else {
+        changeSection.classList.add('hidden');
+    }
+});
 
-    /*const isOpen = checkRestaurantOpen();
-    if(!isOpen){
+
+// FINALIZAR PEDIDO
+checkoutBtn.addEventListener("click", function() {
+    const isOpen = checkRestaurantOpen();
+
+    if (!isOpen) {
         Toastify({
             text: "O restaurante está fechado!",
             duration: 3000,
@@ -256,56 +278,48 @@ checkoutBtn.addEventListener("click", function(){
             position: "center", // `left`, `center` or `right`
             stopOnFocus: true, // Prevents dismissing of toast on hover
             style: {
-              background: "#ef4444",
+                background: "#ef4444",
             },
-            onClick: function(){} // Callback after click
-          }).showToast();
-    }*/
-    
-    if (cart.length === 0) return; //VERIFICA SE TEM ITEM NO CARRINHO, SE NÃO TIVER NÃO ACONTECE NADA
-    if (addressInput.value === ""){
-        addressWarm.classList.remove("hidden")
-        addressInput.classList.add("border-red-500")
-        return;
+            onClick: function() {} // Callback after click
+        }).showToast();
+        return; // Interrompe o processo se o restaurante estiver fechado
     }
-    if (addressInput.value === ""){
-        addressWarm.classList.remove("hidden")
-        addressInput.classList.add("border-red-500")
-        return;
-    }
-    // VERIFICA SE FOI SELECIONADA UMA FORMA DE PAGAMENTO
-    document.getElementById('payment-method').addEventListener('change', function() {
-        const paymentSelect = this;
-        paymentSelect.style.backgroundColor = ''; // remove a cor de fundo
-        paymentSelect.style.borderColor = ''; // remove a borda vermelha
-    });
 
+    if (cart.length === 0) return; // VERIFICA SE TEM ITEM NO CARRINHO, SE NÃO TIVER NÃO ACONTECE NADA
+    if (addressInput.value === "") {
+        addressWarm.classList.remove("hidden")
+        addressInput.classList.add("border-red-500")
+        return;
+    }
+
+    // VERIFICA SE FOI SELECIONADA UMA FORMA DE PAGAMENTO
     const paymentSelect = document.getElementById('payment-method');
     const paymentMethod = paymentSelect.value;
-    
+
     if (paymentMethod === "") {
         paymentSelect.style.backgroundColor = '#fef2f2';
         paymentSelect.style.borderColor = '#ef4444';
         return;
     }
 
-    //ENVIAR PEDIDO PARA WHATSAPP
+    // ENVIAR PEDIDO PARA WHATSAPP
     const cartItems = cart.map((item) => {
-        return (
-            `${item.name} - Qtd: ${item.quantity}`
-        )
-    }).join("\n")
+        return `${item.name} - Qtd: ${item.quantity}`;
+    }).join("\n");
     const greeting = "Olá, boa noite!";
-    const orderMessage = "*_PEDIDO:_*"
+    const orderMessage = "*_PEDIDO:_*";
+    const obsInput = document.getElementById('obs').value;
+    const obs = obsInput ? `*_OBSERVAÇÕES:_* ${obsInput}` : "*_OBSERVAÇÕES:_* Sem observações!";
     const address = `*_ENDEREÇO:_* ${addressInput.value}`;
-    const obs = `*_OBS:_* ${obsInput.value}`;
-    const totalAmout = `*_TOTAL:_* ${cartTotal.textContent}`;
-    const message = encodeURIComponent(`${greeting}\n\n${orderMessage}\n${cartItems}\n\n${address}\n${obs}\n${totalAmout}\n`);
-    const phone = "989975565"
+    const changeAmount = document.getElementById('change-amount').value;
+    const change = changeAmount ? `*_TROCO:_* R$${changeAmount}` : "*_TROCO:_* Não necessário!";
+    const totalAmount = `*_TOTAL:_* ${cartTotal.textContent}`;
+    const message = encodeURIComponent(`${greeting}\n\n${orderMessage}\n${cartItems}\n\n${obs}\n\n${address}\n${change}\n${totalAmount}`);
+    const phone = "984172664";
 
-    window.open(`https://wa.me/${phone}?text=${message}`, "_blank")
-    cartModal.style.display = "none"
-    cart = []; //LIMPA CARRINHO AO MANDAR PEDIDO VIA WHATSAPP
+    window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+    cartModal.style.display = "none";
+    cart = []; // LIMPA CARRINHO AO MANDAR PEDIDO VIA WHATSAPP
     updateCartModal();
     Toastify({
         text: "Pedido enviado com sucesso!",
@@ -315,26 +329,27 @@ checkoutBtn.addEventListener("click", function(){
         position: "right", // `left`, `center` or `right`
         stopOnFocus: true, // Prevents dismissing of toast on hover
         style: {
-          background: "green",
+            background: "green",
         },
-        onClick: function(){} // Callback after click
-      }).showToast();
-})
+        onClick: function() {} // Callback after click
+    }).showToast();
+});
 
-//VERIFICAR HORÁRIO DE FUNCIONAMENTO DO RESTAURANTE
-/*function checkRestaurantOpen(){
-    const data = new Date();
-    const hora = data.getHours();
-    return hora >= 18 && hora< 00; //true - RESTAURANTE ABERTO
+// VERIFICAR HORÁRIO DE FUNCIONAMENTO DO RESTAURANTE
+function checkRestaurantOpen() {
+    //const data = new Date();
+    //const hora = data.getHours();
+    const hora = 23; // Definindo a hora para 23:00 para fins de teste
+    return hora >= 18 && hora < 24; // true - RESTAURANTE ABERTO
 }
 
-const spanItem = document.getElementById("date-span")
+const spanItem = document.getElementById("date-span");
 const isOpen = checkRestaurantOpen();
 
-if (isOpen){
-    spanItem.classList.remove("bg-red-500") //REMOVE VERMELHO
-    spanItem.classList.add("bg-green-600") //ADD VERDE
-}else{
-    spanItem.classList.remove("bg-green-600")
-    spanItem.classList.add("bg-red-500")
-}*/
+if (isOpen) {
+    spanItem.classList.remove("bg-red-500"); // REMOVE VERMELHO
+    spanItem.classList.add("bg-green-600"); // ADD VERDE
+} else {
+    spanItem.classList.remove("bg-green-600");
+    spanItem.classList.add("bg-red-500");
+}

@@ -16,13 +16,15 @@
 - [x] add whats, face, instagram
 - [x] add barra de rolagem
 - [x] add descrição, valor e nome real dos itens
-- [ ] add forma de pagamento (precisa de troco?)
-- [ ] arrumar tamanho do precisa de troco
-- [ ] add msg de pagamento e troco no zap
-- [ ] colocar valor em ordem crescente (com javascript)
-- [ ] botão de apagar do carrinho
-- [ ] zoom na imagem ao clicar
-- [ ] arrumar problema de abrir pedido mesmo fora de horário (centralizar mensagem)
+- [x] arrumar tamanho do precisa de troco
+- [x] add msg de pagamento e troco no zap
+- [x] só aparecer informações caso tenha algo no carrinho
+- [x] opção de limpar carrinho
+- [x] se for um item apenas, aparece uma lixeira
+- [x] colocar valor em ordem crescente
+- [x] botão de apagar do carrinho
+- [x] arrumar problema de abrir pedido mesmo fora de horário (centralizar mensagem)
+- [x] zoom na imagem ao clicar
 
 - [ ] testar versões mobile
 - [ ] add foto do projeto no README (com foto da msg do zap)
