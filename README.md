@@ -49,16 +49,17 @@
   <p><strong>FUNCIONALIDADS</strong></p>
 </div>
 
--  100% Responsivo: O site é totalmente adaptável a diferentes tamanhos de tela e dispositivos.
-- Adição e Remoção de Itens: É possível adicionar e remover itens diretamente no menu ou pelo modal. Uma notificação é exibida ao adicionar itens ao carrinho.
-- Finalização da Compra: A compra é finalizada através do modal de carrinho.
-- Limpar Carrinho: Há uma opção para limpar o carrinho dentro do modal.
-- Carrinho Vazio: Se o carrinho estiver vazio, uma mensagem será exibida em vez do modal de informações.
-- Observações no Pedido: É possível adicionar observações ao pedido.
-- Opções de Pagamento: Aceita pagamentos por Pix, cartão de crédito, débito e dinheiro, com a possibilidade de digitar o troco, se necessário.
-- Estado da Hamburgueria: O envio do pedido é impedido se a hamburgueria estiver fechada, com uma notificação exibida.
-- Zoom nas Imagens: Ao clicar na imagem do item desejado, ela abre em forma de zoom.
-- Barra de Rolagem: A barra de rolagem indica quando o usuário está perto do fim do cardápio.
+- **100% Responsivo:** O site é totalmente adaptável a diferentes tamanhos de tela e dispositivos.
+- **Adição e Remoção de Itens:** É possível adicionar e remover itens diretamente no menu ou pelo modal. Uma notificação é exibida ao adicionar itens ao carrinho.
+- **Finalização da Compra:** A compra é finalizada através do modal de carrinho.
+- **Limpar Carrinho:** Há uma opção para limpar o carrinho dentro do modal.
+- **Carrinho Vazio:** Se o carrinho estiver vazio, uma mensagem será exibida em vez do modal de informações.
+- **Observações no Pedido:** É possível adicionar observações ao pedido.
+- **Opções de Pagamento:** Aceita pagamentos por Pix, cartão de crédito, débito e dinheiro, com a possibilidade de digitar o troco, se necessário.
+- **Estado da Hamburgueria:** O envio do pedido é impedido se a hamburgueria estiver fechada, com uma notificação exibida.
+- **Zoom nas Imagens:** Ao clicar na imagem do item desejado, ela abre em forma de zoom.
+- **Barra de Rolagem:** A barra de rolagem indica quando o usuário está perto do fim do cardápio.
+
 
 --------------------------------------------------------------------------------------------------------
 <br>
