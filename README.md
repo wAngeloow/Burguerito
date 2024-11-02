@@ -46,7 +46,7 @@
 <br>
 
 <div align="center">
-  <p><strong>FUNCIONALIDADS</strong></p>
+  <p><strong>FUNCIONALIDADES</strong></p>
 </div>
 
 - **100% Responsivo:** O site é totalmente adaptável a diferentes tamanhos de tela e dispositivos.
